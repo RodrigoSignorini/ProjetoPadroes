@@ -28,21 +28,21 @@ public class Baralho {
 
     public void criarCartas() {
         System.out.println("Criando cartas...\n");
-        for (int numCard = 0; numCard < 13; numCard++) {
+        for (int numCard = 1; numCard < 14; numCard++) {
             for (Naipe naipe : naipes) {
                 Carta novaCarta = new Carta("", naipe);
 
                 switch (numCard) {
-                    case 0:
+                    case 1:
                         novaCarta.setValor("A");
                         break;
-                    case 10:
+                    case 11:
                         novaCarta.setValor("J");
                         break;
-                    case 11:
+                    case 12:
                         novaCarta.setValor("Q");
                         break;
-                    case 12:
+                    case 13:
                         novaCarta.setValor("K");
                         break;
                     default:
@@ -71,5 +71,6 @@ public class Baralho {
 
     public Stack<Carta> getBaralho() {
         return baralho;
+        
     }
 }
