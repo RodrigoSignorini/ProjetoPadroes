@@ -16,9 +16,6 @@ public class Baralho {
 
     private Stack<Carta> baralho;
 
-    private PilhaFileira[] fileiras = new PilhaFileira[7];
-    private Stack estoque = new Stack();
-
     public Naipe[] naipes = {
         new Naipe("VERMELHO", "COPAS"),
         new Naipe("VERMELHO", "OURO"),
@@ -77,31 +74,5 @@ public class Baralho {
 
     }
 
-    public void iniciarFileiras() {
-        System.out.println("\nIniciarFileiras\n");
-        for (int i = 0; i < 7; i++) {
-            PilhaFileira pilha = new PilhaFileira("Fileira:" + (i + 1));
-            System.out.println("\nFileira " + (i + 1));
-            // Retira do baralho e receberNo nas listas de cartas
-            for (int j = 0; j < (i + 1); j++) {
-                Carta novaCarta = this.baralho.pop();
-                pilha.empilhar(novaCarta);
-                System.out.printf("Carta: %s, Naipe: %s, Cor:%s\n", novaCarta.getValor(), novaCarta.getNaipe().getTipo(), novaCarta.getNaipe().getCor());
-            }
-            this.fileiras[i] = pilha;
-        }
-    }
-
-    public void iniciarEstoque() {
-        System.out.println("\nEstoque\n ");
-
-        for (int i = 0; i < 23; i++) {
-            Carta cartaEstoque = this.baralho.pop();
-            estoque.push(cartaEstoque);
-            System.out.printf("Carta: %s, Naipe: %s, Cor:%s\n", cartaEstoque.getValor(), cartaEstoque.getNaipe().getTipo(), cartaEstoque.getNaipe().getCor());
-
-        }
-        
-        
-    }
+    
 }

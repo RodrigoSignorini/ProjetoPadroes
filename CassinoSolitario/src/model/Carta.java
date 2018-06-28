@@ -13,8 +13,8 @@ public class Carta {
 
     private final Naipe naipe;
     private String valor;
-    private String simbolo;
-    private boolean isVisible;
+    private String simbolo = "[<>]";
+    private boolean visivel = false;
 
     public Carta(String valor, Naipe naipe) {
         this.valor = valor;
@@ -41,17 +41,17 @@ public class Carta {
         this.simbolo = simbolo;
     }
 
-    public boolean isIsVisible() {
-        return isVisible;
+    public boolean getVisivel() {
+        return visivel;
     }
 
-    public void setIsVisible(boolean isVisible) {
-        this.isVisible = isVisible;
+    public void setVisivel(boolean isVisible) {
+        this.visivel = isVisible;
     }
 
     public void virarCarta(Carta carta) {
         
-        if (carta.isVisible) {
+        if (!carta.visivel) {
             carta.setSimbolo("[<>]");
         } else {
             carta.setSimbolo(carta.getValor());

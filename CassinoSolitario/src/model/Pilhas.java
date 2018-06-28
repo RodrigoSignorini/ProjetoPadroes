@@ -13,16 +13,15 @@ import java.util.Stack;
  */
 public class Pilhas {
     
-    private Stack pilha = new Stack();
+    private Stack<Carta> pilha = new Stack();
     
     public void empilhar(Carta carta){
         
         pilha.push(carta);
     }
     
-    public void desempilhar(Carta carta){
+    public Carta desempilhar(){
         
-        
-    } 
-    
+        return (Carta) pilha.pop();
+    }
 }
