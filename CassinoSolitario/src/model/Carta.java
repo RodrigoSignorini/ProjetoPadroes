@@ -11,8 +11,10 @@ package model;
  */
 public class Carta {
 
-    private Naipe naipe;
+    private final Naipe naipe;
     private String valor;
+    private String simbolo;
+    private boolean isVisible;
 
     public Carta(String valor, Naipe naipe) {
         this.valor = valor;
@@ -29,5 +31,31 @@ public class Carta {
 
     public void setValor(String valor) {
         this.valor = valor;
+    }
+
+    public String getSimbolo() {
+        return simbolo;
+    }
+
+    public void setSimbolo(String simbolo) {
+        this.simbolo = simbolo;
+    }
+
+    public boolean isIsVisible() {
+        return isVisible;
+    }
+
+    public void setIsVisible(boolean isVisible) {
+        this.isVisible = isVisible;
+    }
+
+    public void virarCarta(Carta carta) {
+        
+        if (carta.isVisible) {
+            carta.setSimbolo("[<>]");
+        } else {
+            carta.setSimbolo(carta.getValor());
+        }
+        
     }
 }

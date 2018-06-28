@@ -1,12 +1,13 @@
+/CassinoSolitario/dist/
 
 # Created by https://www.gitignore.io/api/java,netbeans
 
 ### Java ###
 # Compiled class file
-CassinoSolitario/*.class
+/CassinoSolitario/*.class
 
 # Log file
-CassinoSolitario/*.log
+/CassinoSolitario/*.log
 
 # BlueJ files
 *.ctxt
@@ -27,12 +28,12 @@ CassinoSolitario/*.log
 hs_err_pid*
 
 ### NetBeans ###
-CassinoSolitario/nbproject/private/
-CassinoSolitario/build/
-CassinoSolitario/nbbuild/
-CassinoSolitario/dist/
-CassinoSolitario/nbdist/
-CassinoSolitario/.nb-gradle/
+/CassinoSolitario/nbproject/private/
+/CassinoSolitario/build/
+/CassinoSolitario/nbbuild/
+/CassinoSolitario/dist/
+/CassinoSolitario/nbdist/
+/CassinoSolitario/.nb-gradle/
 
 
 # End of https://www.gitignore.io/api/java,netbeans

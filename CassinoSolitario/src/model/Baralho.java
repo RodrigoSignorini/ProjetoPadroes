@@ -52,7 +52,7 @@ public class Baralho {
                         novaCarta.setValor("" + numCard);
                         break;
                 }
-//                System.out.printf("Carta: %s, Naipe: %s, Cor:%s\n", novaCarta.getValor(), novaCarta.getNaipe().getTipo(), novaCarta.getNaipe().getCor());
+//                System.out.printf("Carta: %s, Naipe: %s, Cor:%s\n", novaCarta.getValor(), novaCarta.getNaipe().getTipo(), novaCarta.getNaipe().getCor()); 
                 baralho.push(novaCarta);
             }
         }
@@ -78,6 +78,7 @@ public class Baralho {
     }
 
     public void iniciarFileiras() {
+        System.out.println("\nIniciarFileiras\n");
         for (int i = 0; i < 7; i++) {
             PilhaFileira pilha = new PilhaFileira("Fileira:" + (i + 1));
             System.out.println("\nFileira " + (i + 1));

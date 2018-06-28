@@ -5,7 +5,6 @@
  */
 package view;
 
-import java.util.Stack;
 import model.Baralho;
 import model.Carta;
 
