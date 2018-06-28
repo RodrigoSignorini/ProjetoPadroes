@@ -5,15 +5,19 @@
  */
 package model;
 
+import java.util.Stack;
+
 /**
  *
  * @author aluno
  */
 public class Pilhas {
     
+    private Stack pilha = new Stack();
+    
     public void empilhar(Carta carta){
         
-        
+        pilha.push(carta);
     }
     
     public void desempilhar(Carta carta){

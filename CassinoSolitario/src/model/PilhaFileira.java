@@ -5,21 +5,28 @@
  */
 package model;
 
+import java.util.Stack;
+
 /**
  *
  * @author aluno
  */
-public class PilhaFileira extends Pilhas {
+public class PilhaFileira extends Pilhas{
+
+    private String nome;
+
+    public PilhaFileira(String nome) {
+        this.nome = nome;
+    }
 
     @Override
     public void empilhar(Carta carta) {
-        super.empilhar(carta); //To change body of generated methods, choose Tools | Templates.
+        super.empilhar(carta);
     }
 
     @Override
     public void desempilhar(Carta carta) {
-        super.desempilhar(carta); //To change body of generated methods, choose Tools | Templates.
+        super.desempilhar(carta);
     }
-    
-    
+
 }
