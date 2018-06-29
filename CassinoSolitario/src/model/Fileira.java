@@ -31,19 +31,25 @@ public class Fileira {
         return fileira.pop();
     }
 
+    public Carta peekCarta() {
+
+        return fileira.peek();
+    }
+
     public void exibirFileira() {
         for (Carta carta : fileira) {
 //            System.out.printf("Carta: %s, Naipe: %s, Cor:%s, Simbolo:%s\n", carta.getValor(), carta.getNaipe().getTipo(), carta.getNaipe().getCor(), carta.getSimbolo());
             if (carta.getVisivel()) {
                 System.out.printf("%s %s", carta.getSimbolo(), carta.getNaipe().getTipo());
             } else {
-                System.out.printf("%s, ", carta.getSimbolo());
+                System.out.printf("%s", carta.getSimbolo());
 
             }
+            System.out.printf(" | ");
         }
     }
-    
-    public boolean estaVazia(){
+
+    public boolean estaVazia() {
         return fileira.empty();
     }
 }

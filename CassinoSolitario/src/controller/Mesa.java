@@ -71,6 +71,12 @@ public class Mesa {
         } else {
             Carta cartaOrigem = fileiras[fileiraOrigem - 1].popCarta();
             fileiras[fileiraDestino - 1].pushCarta(cartaOrigem);
+            
+            //Muda o simbolo da carta na fileira de origem para o valor da mesma
+            Carta cartaTopo = fileiras[fileiraOrigem - 1].peekCarta();
+            cartaTopo.setVisivel(true);
+            cartaTopo.virarCarta(cartaTopo);
+//            fileiras[fileiraOrigem - 1].pushCarta(cartaTopo);
             return true;
         }
 
