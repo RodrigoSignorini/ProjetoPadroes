@@ -40,12 +40,21 @@ public class Fileira {
         for (Carta carta : fileira) {
 //            System.out.printf("Carta: %s, Naipe: %s, Cor:%s, Simbolo:%s\n", carta.getValor(), carta.getNaipe().getTipo(), carta.getNaipe().getCor(), carta.getSimbolo());
             if (carta.getVisivel()) {
-                System.out.printf("%s %s", carta.getSimbolo(), carta.getNaipe().getTipo());
+                System.out.printf(" %s %s", carta.getSimbolo(), carta.getNaipe().getTipo());
             } else {
-                System.out.printf("%s", carta.getSimbolo());
+                System.out.printf(" %s", carta.getSimbolo());
 
             }
             System.out.printf(" | ");
+        }
+    }
+
+    public void atualizarFileira() {
+        if (!this.fileira.empty()) {
+            //Muda o simbolo da carta na fileira de origem para o valor da mesma
+            Carta cartaTopo = this.fileira.peek();
+            cartaTopo.setVisivel(true);
+            cartaTopo.virarCarta(cartaTopo);
         }
     }
 

@@ -27,7 +27,7 @@ public class main {
         System.out.println("Cassino Solitario\n");
         baralho.criarCartas();
         baralho.embaralhar();
-        
+
         mesa.iniciarFileiras();
         Scanner scanner = new Scanner(System.in);
         int fileiraO, fileiraD = 0;
@@ -47,13 +47,16 @@ public class main {
                     fileiraO = scanner.nextInt();
                     System.out.println("Digite o numero da fileira destino:");
                     fileiraD = scanner.nextInt();
-
+                    //verificar o numero digitado para nao selecionar fileira que nao existe
                     boolean acao = mesa.moverCartas(fileiraO, fileiraD);
-                    if(!acao){
+                    if (!acao) {
                         System.out.println("\nFileira de origem VAZIA.\nEscolha corretamente!");
-                    }else{
-                        System.out.println("\nCarta movida com sucesso!");
+                    } else {
+                        System.out.println("\n--------------------------\nCarta movida com sucesso!\n--------------------------");
                     }
+
+                    mesa.exibirFileiras();
+
                     break;
                 case 4:
                     System.out.println("Jogo encerrado.\n");

@@ -35,11 +35,9 @@ public class Mesa {
                 fileira.pushCarta(novaCarta);
 //                System.out.printf("Carta: %s, Naipe: %s, Cor:%s, Simbolo:%s\n", novaCarta.getValor(), novaCarta.getNaipe().getTipo(), novaCarta.getNaipe().getCor(), novaCarta.getSimbolo());
             }
-            Carta carta = fileira.popCarta();
+            Carta carta = fileira.peekCarta();
             carta.setVisivel(true);
             carta.virarCarta(carta);
-            fileira.pushCarta(carta);
-
             this.fileiras[i] = fileira;
         }
 
@@ -62,6 +60,7 @@ public class Mesa {
             System.out.printf("\nFileira " + (i + 1) + ":");
             fileiras[i].exibirFileira();
         }
+        System.out.printf("\n");
     }
 
     public boolean moverCartas(int fileiraOrigem, int fileiraDestino) {
@@ -71,12 +70,7 @@ public class Mesa {
         } else {
             Carta cartaOrigem = fileiras[fileiraOrigem - 1].popCarta();
             fileiras[fileiraDestino - 1].pushCarta(cartaOrigem);
-            
-            //Muda o simbolo da carta na fileira de origem para o valor da mesma
-            Carta cartaTopo = fileiras[fileiraOrigem - 1].peekCarta();
-            cartaTopo.setVisivel(true);
-            cartaTopo.virarCarta(cartaTopo);
-//            fileiras[fileiraOrigem - 1].pushCarta(cartaTopo);
+            fileiras[fileiraOrigem - 1].atualizarFileira();
             return true;
         }
 
