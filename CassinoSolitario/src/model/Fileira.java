@@ -38,12 +38,11 @@ public class Fileira {
 
     public void exibirFileira() {
         for (Carta carta : fileira) {
-//            System.out.printf("Carta: %s, Naipe: %s, Cor:%s, Simbolo:%s\n", carta.getValor(), carta.getNaipe().getTipo(), carta.getNaipe().getCor(), carta.getSimbolo());
+            
             if (carta.getVisivel()) {
                 System.out.printf(" %s %s", carta.getSimbolo(), carta.getNaipe().getTipo());
             } else {
                 System.out.printf(" %s", carta.getSimbolo());
-
             }
             System.out.printf(" | ");
         }

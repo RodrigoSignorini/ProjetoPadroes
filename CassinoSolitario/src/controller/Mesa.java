@@ -7,7 +7,10 @@ package controller;
 
 import java.util.Stack;
 import model.Carta;
+import model.Estoque;
 import model.Fileira;
+import model.Fundacao;
+import model.Descarte;
 
 /**
  *
@@ -22,7 +25,9 @@ public class Mesa {
     }
     //Funcoes que estao na classe baralho deverao ser feitas aqui
     private Fileira[] fileiras = new Fileira[7];
-    private Stack estoque = new Stack();
+    private Fundacao[] fundacoes = new Fundacao[7];
+    private Estoque estoque = new Estoque();
+    private Descarte descarte = new Descarte();
 
     public void iniciarFileiras() {
         System.out.println("\nIniciando Fileiras...");
@@ -43,19 +48,50 @@ public class Mesa {
 
     }
 
-    public void iniciarEstoque() {
-        System.out.println("\nEstoque");
-
-        for (int i = 0; i < 23; i++) {
-            Carta cartaEstoque = this.baralho.pop();
-            estoque.push(cartaEstoque);
-//            System.out.printf("Carta: %s, Naipe: %s, Cor:%s\n", cartaEstoque.getValor(), cartaEstoque.getNaipe().getTipo(), cartaEstoque.getNaipe().getCor());
-
+    public void iniciarFundacoes() {
+        System.out.println("\nFundacoes");
+        for (int i = 0; i < 4; i++) {
+            Fundacao fundacao = new Fundacao("Fundacao:" + (i + 1));
+            this.fundacoes[i] = fundacao;
         }
     }
 
+    public void iniciarEstoque() {
+        System.out.println("\nEstoque");
+        for (int i = 0; i < 23; i++) {
+
+            Carta cartaEstoque = this.baralho.pop();
+            this.estoque.pushCarta(cartaEstoque);
+        }
+
+        Carta carta = this.estoque.popCarta();
+        carta.setVisivel(true);
+        carta.virarCarta(carta);
+        this.descarte.pushCarta(carta);
+        Carta carta2 = this.estoque.popCarta();
+        carta2.setVisivel(true);
+        carta.virarCarta(carta2);
+        this.descarte.pushCarta(carta2);
+        Carta carta3 = this.estoque.popCarta();
+        carta3.setVisivel(true);
+        carta.virarCarta(carta3);
+        this.descarte.pushCarta(carta3);
+
+        System.out.printf("\n");
+    }
+
+    public void exibirEstoque() {
+        System.out.printf("\nEstoque: ");
+        this.estoque.exibirEstoque();
+    }
+
+    public void exibirDescarte(int escolha) {
+        System.out.printf("\nDescarte: ");
+        this.descarte.exibir(escolha);
+    }
+
     public void exibirFileiras() {
-        System.out.println("\nExibirFileiras");
+        //System.out.println("\nExibirFileiras");
         for (int i = 0; i < 7; i++) {
             System.out.printf("\nFileira " + (i + 1) + ":");
             fileiras[i].exibirFileira();

@@ -57,7 +57,7 @@ public class Baralho {
     }
 
     public void embaralhar() {
-        System.out.println("Embaralhando cartas...\n");
+        System.out.println("Embaralhando cartas...");
         Collections.shuffle(baralho);
         baralho.forEach((carta) -> {
 //            System.out.printf("Carta: %s, Naipe: %s, Cor:%s\n", carta.getValor(), carta.getNaipe().getTipo(), carta.getNaipe().getCor());
