@@ -34,8 +34,8 @@ public class main {
                     //
                     //        baralho.iniciarFileiras();
                     //        baralho.exibirFileiras();
-                    System.out.println("\n\n\n"
-                            + "Bem vindo ao Cassino Solitario!\n");
+                    System.out.println("\n\n\nBem vindo ao Cassino Solitario!\n");
+                    //permitir ao usuário escolher numero de cartas exibidas na pilha de descartes
                     baralho.criarCartas();
                     baralho.embaralhar();
 
@@ -58,8 +58,10 @@ public class main {
                             case 2:
                                 System.out.println("Digite o numero da fileira origem:");
                                 fileiraO = scanner.nextInt();
+                                //verificar se a fileira de origem tem carta para ser movida
                                 System.out.println("Digite o numero da fileira destino:");
                                 fileiraD = scanner.nextInt();
+                                //verificar se a fileira de destino pode receber a(s) carta(s)
                                 //verificar o numero digitado para nao selecionar fileira que nao existe
                                 boolean acao = mesa.moverCartas(fileiraO, fileiraD);
                                 if (!acao) {
