@@ -38,8 +38,7 @@ public class main {
                     //permitir ao usuário escolher numero de cartas exibidas na pilha de descartes
                     baralho.criarCartas();
                     baralho.embaralhar();
-                    mesa.iniciarFileiras();
-                    mesa.iniciarEstoque();
+                    mesa.iniciarJogo();
                     Scanner scanner = new Scanner(System.in);
                     int fileiraO,
                      fileiraD = 0;
@@ -68,9 +67,7 @@ public class main {
                         escolha = scanner.nextInt();
                         switch (escolha) {
                             case 1:
-                                mesa.exibirEstoque();
-                                mesa.exibirDescarte(qtdCartas);
-                                mesa.exibirFileiras();
+                                mesa.exibirJogo(qtdCartas);
                                 break;
 
                             case 2:

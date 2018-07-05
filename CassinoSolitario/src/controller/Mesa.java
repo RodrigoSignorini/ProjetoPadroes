@@ -32,7 +32,7 @@ public class Mesa {
     public void iniciarFileiras() {
         System.out.println("\nIniciando Fileiras...");
         for (int i = 0; i < 7; i++) {
-            Fileira fileira = new Fileira("Fileira:" + (i + 1));
+            Fileira fileira = new Fileira("Fileira:" + (i + 7));
 //            System.out.println("\nFileira " + (i + 1));
 
             for (int j = 0; j < (i + 1); j++) {
@@ -49,7 +49,7 @@ public class Mesa {
     }
 
     public void iniciarFundacoes() {
-        System.out.println("\nFundacoes");
+        System.out.println("Fundacoes");
         for (int i = 0; i < 4; i++) {
             Fundacao fundacao = new Fundacao("Fundacao:" + (i + 1));
             this.fundacoes[i] = fundacao;
@@ -79,21 +79,42 @@ public class Mesa {
 
         System.out.printf("\n");
     }
-
+    
+    public void iniciarJogo(){
+        iniciarFileiras();
+        iniciarEstoque();
+        iniciarFundacoes();
+        
+    }
+    public void exibirJogo(int escolhaQtdCartas){
+        exibirEstoque();
+        exibirDescarte(escolhaQtdCartas);
+        exibirFundacoes();
+        exibirFileiras();
+    }
     public void exibirEstoque() {
-        System.out.printf("\nEstoque: ");
+        System.out.printf("\n1 - Estoque: ");
         this.estoque.exibirEstoque();
     }
 
     public void exibirDescarte(int escolha) {
-        System.out.printf("\nDescarte: ");
+        System.out.printf("\n2 - Descarte: ");
         this.descarte.exibir(escolha);
+    }
+    
+     public void exibirFundacoes() {
+         
+         for (int i = 0; i < 4; i++) {
+            System.out.printf("\n" + (i + 3) + " - Fundacao:");
+            fundacoes[i].exibir();
+        }
+        System.out.printf("\n");
     }
 
     public void exibirFileiras() {
         //System.out.println("\nExibirFileiras");
         for (int i = 0; i < 7; i++) {
-            System.out.printf("\nFileira " + (i + 1) + ":");
+            System.out.printf("\n" + (i + 7) + " - Fileira:");
             fileiras[i].exibirFileira();
         }
         System.out.printf("\n");
@@ -104,11 +125,35 @@ public class Mesa {
         if (fileiras[fileiraOrigem - 1].estaVazia()) {
             return false;
         } else {
-            Carta cartaOrigem = fileiras[fileiraOrigem - 1].popCarta();
-            fileiras[fileiraDestino - 1].pushCarta(cartaOrigem);
-            fileiras[fileiraOrigem - 1].atualizarFileira();
-            return true;
-        }
 
+            if (fileiraOrigem == 2) {
+                if (fileiraDestino == 7 || fileiraDestino == 8 || fileiraDestino == 9 || fileiraDestino == 10 || fileiraDestino == 11 || fileiraDestino == 12 || fileiraDestino == 13) {
+                    
+                    Carta cartaDescarte = descarte.popCarta();
+                    
+                    Carta carta = this.estoque.popCarta();
+                    carta.setVisivel(true);
+                    carta.virarCarta(carta);
+                    this.descarte.pushCarta(carta);
+
+                    fileiras[fileiraDestino - 7].pushCarta(cartaDescarte);
+                    return true;
+                }
+
+            } else if (fileiraDestino == 7 || fileiraDestino == 8 || fileiraDestino == 9 || fileiraDestino == 10 || fileiraDestino == 11 || fileiraDestino == 12 || fileiraDestino == 13) {
+
+                Carta cartaOrigem = fileiras[fileiraOrigem].popCarta();
+                fileiras[fileiraDestino].pushCarta(cartaOrigem);
+                fileiras[fileiraOrigem].atualizarFileira();
+                return true;
+
+            }
+        }
+        return false;
+    }
+    
+    public void verificarSequencia(Carta cartaOrigem, Carta cartaDestino ){
+        
+           
     }
 }
