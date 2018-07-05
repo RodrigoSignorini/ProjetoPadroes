@@ -25,7 +25,7 @@ public class Mesa {
     private Stack estoque = new Stack();
 
     public void iniciarFileiras() {
-        System.out.println("\nIniciarFileiras");
+        System.out.println("\nIniciando Fileiras...");
         for (int i = 0; i < 7; i++) {
             Fileira fileira = new Fileira("Fileira:" + (i + 1));
 //            System.out.println("\nFileira " + (i + 1));

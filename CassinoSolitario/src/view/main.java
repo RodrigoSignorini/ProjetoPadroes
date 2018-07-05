@@ -11,59 +11,85 @@ import model.Baralho;
 
 /**
  *
- * @author jvboa
+ * @author Gustavo e Jadson
  */
 public class main {
 
     public static void main(String[] args) {
-
-        Baralho baralho = new Baralho();
-        Mesa mesa = new Mesa(baralho.getBaralho());
-//        baralho.criarCartas();
-//        baralho.embaralhar();
-//
-//        baralho.iniciarFileiras();
-//        baralho.exibirFileiras();
-        System.out.println("Cassino Solitario\n");
-        baralho.criarCartas();
-        baralho.embaralhar();
-
-        mesa.iniciarFileiras();
-        Scanner scanner = new Scanner(System.in);
-        int fileiraO, fileiraD = 0;
-        int escolha = 0;
+        
+        System.out.println("Menu Principal");
+        Scanner scannerMenu = new Scanner(System.in);
+        int escolhaMenu = 0;
         do {
-
-            System.out.println("\nEscolha uma das opcoes abaixo:\n1 - Exibir Fileiras\n2 - Mover Carta\n4 - Sair do Jogo\n");
-            escolha = scanner.nextInt();
-            switch (escolha) {
-
+            System.out.println("\nEscolha uma das opcoes abaixo:"
+                    + "\n1 - Jogar Cassino Solitário"
+                    + "\n4 - Sair\n");
+            escolhaMenu = scannerMenu.nextInt();
+            switch (escolhaMenu) {
                 case 1:
-                    mesa.exibirFileiras();
+                    Baralho baralho = new Baralho();
+                    Mesa mesa = new Mesa(baralho.getBaralho());
+                    //        baralho.criarCartas();
+                    //        baralho.embaralhar();
+                    //
+                    //        baralho.iniciarFileiras();
+                    //        baralho.exibirFileiras();
+                    System.out.println("\n\n\n"
+                            + "Bem vindo ao Cassino Solitario!\n");
+                    baralho.criarCartas();
+                    baralho.embaralhar();
+
+                    mesa.iniciarFileiras();
+                    Scanner scanner = new Scanner(System.in);
+                    int fileiraO,
+                     fileiraD = 0;
+                    int escolha = 0;
+                    do {
+                        System.out.println("\nEscolha uma das opcoes abaixo:"
+                                + "\n1 - Exibir Fileiras"
+                                + "\n2 - Mover Carta"
+                                + "\n4 - Sair do Jogo\n");
+                        escolha = scanner.nextInt();
+                        switch (escolha) {
+                            case 1:
+                                mesa.exibirFileiras();
+                                break;
+
+                            case 2:
+                                System.out.println("Digite o numero da fileira origem:");
+                                fileiraO = scanner.nextInt();
+                                System.out.println("Digite o numero da fileira destino:");
+                                fileiraD = scanner.nextInt();
+                                //verificar o numero digitado para nao selecionar fileira que nao existe
+                                boolean acao = mesa.moverCartas(fileiraO, fileiraD);
+                                if (!acao) {
+                                    System.out.println("\nFileira de origem VAZIA.\nEscolha corretamente!");
+                                } else {
+                                    System.out.println("\n--------------------------\nCarta movida com sucesso!"
+                                            + "\n--------------------------");
+                                }
+
+                                mesa.exibirFileiras();
+                                break;
+
+                            case 4:
+                                System.out.println("Jogo encerrado.\n");
+                                System.exit(1);
+
+                            default:
+                                System.out.println("Opcao invalida!\n");
+                        }
+                    } while (escolha != 4);
                     break;
-
-                case 2:
-                    System.out.println("Digite o numero da fileira origem:");
-                    fileiraO = scanner.nextInt();
-                    System.out.println("Digite o numero da fileira destino:");
-                    fileiraD = scanner.nextInt();
-                    //verificar o numero digitado para nao selecionar fileira que nao existe
-                    boolean acao = mesa.moverCartas(fileiraO, fileiraD);
-                    if (!acao) {
-                        System.out.println("\nFileira de origem VAZIA.\nEscolha corretamente!");
-                    } else {
-                        System.out.println("\n--------------------------\nCarta movida com sucesso!\n--------------------------");
-                    }
-
-                    mesa.exibirFileiras();
-
-                    break;
+                    
                 case 4:
-                    System.out.println("Jogo encerrado.\n");
+                    System.out.println("Sistema encerrado.\n");
                     System.exit(1);
+                    
                 default:
                     System.out.println("Opcao invalida!\n");
             }
-        } while (escolha != 4);
+        } while (escolhaMenu != 4);
+        
     }
 }
