@@ -122,12 +122,12 @@ public class Mesa {
         System.out.printf("\n");
     }
 
-    public boolean moverCartas(int fileiraOrigem, int fileiraDestino) {
+    public String moverCartas(int fileiraOrigem, int fileiraDestino) {
         if (fileiraOrigem == 1) {
-            return false;
+            return "ERRO ESTOQUE";
         } else if (fileiraOrigem == 2) {
             if (descarte.estaVazia()) {
-                return false;
+                return "FILEIRA VAZIA";
             }
             //movendo do descarte para as fundacoes
             if (fileiraDestino == 3 || fileiraDestino == 4 || fileiraDestino == 5 || fileiraDestino == 6) {
@@ -139,6 +139,7 @@ public class Mesa {
                 this.descarte.pushCarta(carta);
 
                 fundacoes[fileiraDestino - 3].pushCarta(cartaDescarte);
+                return "";
             } //movendo do descarte para as fileiras
             else if (fileiraDestino == 7 || fileiraDestino == 8 || fileiraDestino == 9 || fileiraDestino == 10 || fileiraDestino == 11 || fileiraDestino == 12 || fileiraDestino == 13) {
 
@@ -150,24 +151,47 @@ public class Mesa {
                 this.descarte.pushCarta(carta);
 
                 fileiras[fileiraDestino - 7].pushCarta(cartaDescarte);
-                return true;
+                return "";
             }
 
-        } else if (fileiraOrigem == 7 || fileiraOrigem == 8 || fileiraOrigem == 9 || fileiraOrigem == 10 || fileiraOrigem == 11 || fileiraOrigem == 12 || fileiraDestino == 13) {
+        } else if (fileiraOrigem == 7 || fileiraOrigem == 8 || fileiraOrigem == 9
+                || fileiraOrigem == 10 || fileiraOrigem == 11 || fileiraOrigem == 12 || fileiraOrigem == 13) {
             if (fileiras[fileiraOrigem - 7].estaVazia()) {
-                return false;
+                return "FILEIRA VAZIA";
             }
-            Carta cartaOrigem = fileiras[fileiraOrigem - 7].popCarta();
-            fileiras[fileiraDestino - 7].pushCarta(cartaOrigem);
-            fileiras[fileiraOrigem - 7].atualizarFileira();
-            return true;
+            if (fileiraDestino == 3 || fileiraDestino == 4 || fileiraDestino == 5 || fileiraDestino == 6) {
+                Carta cartaFileira = fileiras[fileiraOrigem - 7].popCarta();
+                fundacoes[fileiraDestino - 3].pushCarta(cartaFileira);
+                return "";
+            } else if (fileiraDestino== 7 || fileiraDestino== 8 || fileiraDestino== 9
+                    || fileiraDestino== 10 || fileiraDestino== 11 || fileiraDestino== 12 || fileiraDestino == 13) {
 
+                Carta cartaOrigem = fileiras[fileiraOrigem - 7].peekCarta();
+                Carta cartaDestino = fileiras[fileiraDestino - 7].peekCarta();
+
+                if (verificarSequencia(cartaOrigem, cartaDestino)) {
+                    cartaOrigem = fileiras[fileiraOrigem - 7].popCarta();
+
+                    fileiras[fileiraDestino - 7].pushCarta(cartaOrigem);
+                    fileiras[fileiraOrigem - 7].atualizarFileira();
+                    return "";
+                } else {
+
+                    return "SEQ INV";
+                }
+            }
         }
-
-        return true;
+        return "ERRO";
     }
 
-    public void verificarSequencia(Carta cartaOrigem, Carta cartaDestino) {
-
+    public boolean verificarSequencia(Carta cartaOrigem, Carta cartaDestino) {
+        //Verifica a sequencia de cartas entre FILEIRAS
+        if ((cartaOrigem.getValorNumerico() + 1) == cartaDestino.getValorNumerico()
+                && !cartaOrigem.getNaipe().getCor().equals(cartaDestino.getNaipe().getCor())) {
+            System.out.println("\nSequencia Valida.");
+            return true;
+        } else {
+            return false;
+        }
     }
 }

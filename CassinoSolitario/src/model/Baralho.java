@@ -35,18 +35,23 @@ public class Baralho {
                 switch (numCard) {
                     case 1:
                         novaCarta.setValor("A");
+                        novaCarta.setValorNumerico(numCard);
                         break;
                     case 11:
                         novaCarta.setValor("J");
+                        novaCarta.setValorNumerico(numCard);
                         break;
                     case 12:
                         novaCarta.setValor("Q");
+                        novaCarta.setValorNumerico(numCard);
                         break;
                     case 13:
                         novaCarta.setValor("K");
+                        novaCarta.setValorNumerico(numCard);
                         break;
                     default:
                         novaCarta.setValor("" + numCard);
+                        novaCarta.setValorNumerico(numCard);
                         break;
                 }
 //                System.out.printf("Carta: %s, Naipe: %s, Cor:%s\n", novaCarta.getValor(), novaCarta.getNaipe().getTipo(), novaCarta.getNaipe().getCor()); 
@@ -74,5 +79,4 @@ public class Baralho {
 
     }
 
-    
 }

@@ -12,6 +12,7 @@ package model;
 public class Carta {
 
     private final Naipe naipe;
+    private int valorNumerico;
     private String valor;
     private String simbolo = "[<>]";
     private boolean visivel = false;
@@ -49,13 +50,21 @@ public class Carta {
         this.visivel = isVisible;
     }
 
+    public int getValorNumerico() {
+        return valorNumerico;
+    }
+
+    public void setValorNumerico(int valorNumerico) {
+        this.valorNumerico = valorNumerico;
+    }
+
     public void virarCarta(Carta carta) {
-        
+
         if (!carta.visivel) {
             carta.setSimbolo("[<>]");
         } else {
             carta.setSimbolo(carta.getValor());
         }
-        
+
     }
 }

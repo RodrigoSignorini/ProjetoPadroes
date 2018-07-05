@@ -3,15 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jvboa/Documents/GUSTAVO/PADROESFRAMEWORKS/ProjetoPadroes/CassinoSolitario/src/model/Fileira.java</file>
-            <file>file:/C:/Users/jvboa/Documents/GUSTAVO/PADROESFRAMEWORKS/ProjetoPadroes/CassinoSolitario/src/model/Fundacao.java</file>
-            <file>file:/C:/Users/jvboa/Documents/GUSTAVO/PADROESFRAMEWORKS/ProjetoPadroes/CassinoSolitario/src/view/main.java</file>
-            <file>file:/C:/Users/jvboa/Documents/GUSTAVO/PADROESFRAMEWORKS/ProjetoPadroes/CassinoSolitario/src/model/Estoque.java</file>
-            <file>file:/C:/Users/jvboa/Documents/GUSTAVO/PADROESFRAMEWORKS/ProjetoPadroes/CassinoSolitario/src/model/Carta.java</file>
-            <file>file:/C:/Users/jvboa/Documents/GUSTAVO/PADROESFRAMEWORKS/ProjetoPadroes/CassinoSolitario/src/model/Pilhas.java</file>
-            <file>file:/C:/Users/jvboa/Documents/GUSTAVO/PADROESFRAMEWORKS/ProjetoPadroes/CassinoSolitario/src/model/Descarte.java</file>
-            <file>file:/C:/Users/jvboa/Documents/GUSTAVO/PADROESFRAMEWORKS/ProjetoPadroes/CassinoSolitario/src/model/Baralho.java</file>
-            <file>file:/C:/Users/jvboa/Documents/GUSTAVO/PADROESFRAMEWORKS/ProjetoPadroes/CassinoSolitario/src/controller/Mesa.java</file>
+            <file>file:/C:/Users/Jadson/Desktop/Padrões%20e%20Frameworks/ProjetoPadroes/CassinoSolitario/src/view/main.java</file>
+            <file>file:/C:/Users/Jadson/Desktop/Padrões%20e%20Frameworks/ProjetoPadroes/CassinoSolitario/src/model/Pilhas.java</file>
+            <file>file:/C:/Users/Jadson/Desktop/Padrões%20e%20Frameworks/ProjetoPadroes/CassinoSolitario/src/model/Carta.java</file>
+            <file>file:/C:/Users/Jadson/Desktop/Padrões%20e%20Frameworks/ProjetoPadroes/CassinoSolitario/src/controller/Mesa.java</file>
+            <file>file:/C:/Users/Jadson/Desktop/Padrões%20e%20Frameworks/ProjetoPadroes/CassinoSolitario/src/model/Baralho.java</file>
+            <file>file:/C:/Users/Jadson/Desktop/Padrões%20e%20Frameworks/ProjetoPadroes/CassinoSolitario/src/model/Fileira.java</file>
         </group>
     </open-files>
 </project-private>
