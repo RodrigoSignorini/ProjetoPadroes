@@ -18,7 +18,7 @@ public class Baralho {
 
     public Naipe[] naipes = {
         new Naipe("VERMELHO", "COPAS"),
-        new Naipe("VERMELHO", "OURO"),
+        new Naipe("VERMELHO", "OUROS"),
         new Naipe("PRETO", "ESPADA"),
         new Naipe("PRETO", "PAUS"),};
 

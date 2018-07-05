@@ -22,7 +22,7 @@ public class main {
         int escolhaMenu = 0;
         do {
             System.out.println("\nEscolha uma das opcoes abaixo:"
-                    + "\n1 - Jogar Cassino Solitário"
+                    + "\n1 - Jogar Paciencia"
                     + "\n4 - Sair\n");
             escolhaMenu = scannerMenu.nextInt();
             switch (escolhaMenu) {
@@ -63,7 +63,7 @@ public class main {
                         System.out.println("\nEscolha uma das opcoes abaixo:"
                                 + "\n1 - Exibir Jogo"
                                 + "\n2 - Mover Carta"
-                                + "\n4 - Sair do Jogo\n");
+                                + "\n3 - Sair do Jogo\n");
                         escolha = scanner.nextInt();
                         switch (escolha) {
                             case 1:
@@ -80,25 +80,28 @@ public class main {
                                 //verificar o numero digitado para nao selecionar fileira que nao existe
                                 boolean acao = mesa.moverCartas(fileiraO, fileiraD);
                                 if (!acao) {
-                                    System.out.println("\n--------------------------\nFileira de origem VAZIA.\nEscolha corretamente!\n--------------------------");
+                                    if (fileiraO != 1) {
+                                        System.out.println("\n--------------------------\nFileira de origem VAZIA.\nEscolha corretamente!\n--------------------------");
+                                    } else {
+                                        System.out.println("\n----------------\nJogada INVALIDA.\n----------------");
+                                    }
                                 } else {
                                     System.out.println("\n--------------------------\nCarta movida com sucesso!"
                                             + "\n--------------------------");
                                 }
 
-                                mesa.exibirEstoque();
-                                mesa.exibirDescarte(3);
-                                mesa.exibirFileiras();
+                                mesa.exibirJogo(qtdCartas);
+
                                 break;
 
-                            case 4:
+                            case 3:
                                 System.out.println("Jogo encerrado.\n");
                                 System.exit(1);
 
                             default:
-                                System.out.println("Opcao invalida!\n");
+                                System.out.println("\n================\nOpcao invalida!\n================\n");
                         }
-                    } while (escolha != 4);
+                    } while (escolha != 3);
                     break;
 
                 case 4:
@@ -106,7 +109,7 @@ public class main {
                     System.exit(1);
 
                 default:
-                    System.out.println("Opcao invalida!\n");
+                    System.out.println("\n================\nOpcao invalida!\n================\n");
             }
         } while (escolhaMenu != 4);
 

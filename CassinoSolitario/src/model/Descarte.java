@@ -34,6 +34,10 @@ public class Descarte {
         return descarte.peek();
     }
 
+    public boolean estaVazia() {
+        return descarte.empty();
+    }
+
     public void exibir(int qtd) {
         if (descarte.isEmpty()) {
             System.out.printf("");
