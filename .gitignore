@@ -8,6 +8,7 @@
 
 # Log file
 /CassinoSolitario/*.log
+*.temp
 
 # BlueJ files
 *.ctxt
