@@ -9,7 +9,7 @@ import java.util.Stack;
 
 /**
  *
- * @author jvboa
+ * @author Gustavo e Jadson
  */
 public class Fundacao {
     private String nome;

@@ -14,7 +14,7 @@ import model.Descarte;
 
 /**
  *
- * @author jvboa
+ * @author Gustavo e Jadson
  */
 public class Mesa {
 

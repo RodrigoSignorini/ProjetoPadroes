@@ -9,7 +9,7 @@ import java.util.Stack;
 
 /**
  *
- * @author aluno
+ * @author Gustavo e Jadson
  */
 public class Pilhas {
     

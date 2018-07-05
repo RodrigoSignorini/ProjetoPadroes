@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author jvboa
+ * @author Gustavo e Jadson
  */
 public class Naipe {
 
