@@ -22,18 +22,23 @@ public class Fundacao {
     }
 
     public void pushCarta(Carta carta) {
-
         fundacao.push(carta);
     }
 
     public Carta popCarta() {
-
         return fundacao.pop();
     }
 
     public Carta peekCarta() {
-
         return fundacao.peek();
+    }
+    
+    public int countCartas() {
+        return fundacao.size();
+    }
+    
+    public boolean estaVazia() {
+        return fundacao.empty();
     }
 
     public void exibir() {

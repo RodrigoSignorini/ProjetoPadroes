@@ -22,18 +22,19 @@ public class Fileira {
     }
 
     public void pushCarta(Carta carta) {
-
         fileira.push(carta);
     }
 
     public Carta popCarta() {
-
         return fileira.pop();
     }
 
     public Carta peekCarta() {
-
         return fileira.peek();
+    }
+    
+    public int countCartas() {
+        return fileira.size();
     }
 
     public void exibirFileira() {

@@ -33,10 +33,17 @@ public class Estoque {
 
         return estoque.peek();
     }
+    
+    public boolean estaVazio() {
+        return estoque.empty();
+    }
+    
+    public int countCartas() {
+        return estoque.size();
+    }
 
     public void exibirEstoque() {
         for (Carta carta : estoque) {
-
             if (carta.getVisivel()) {
                 System.out.printf(" %s %s", carta.getSimbolo(), carta.getNaipe().getTipo());
             } else {

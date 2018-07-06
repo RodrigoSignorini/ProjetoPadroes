@@ -20,38 +20,45 @@ public class Descarte {
     }
 
     public void pushCarta(Carta carta) {
-
         descarte.push(carta);
     }
 
     public Carta popCarta() {
-
         return descarte.pop();
     }
 
     public Carta peekCarta() {
-
         return descarte.peek();
     }
 
     public boolean estaVazia() {
         return descarte.empty();
     }
+    
+    public int countCartas() {
+        return descarte.size();
+    }
 
     public void exibir(int qtd) {
         if (descarte.isEmpty()) {
             System.out.printf("");
         } else {
-
             if (qtd == 1) {
-                Carta carta = descarte.get(descarte.size() - qtd);
+                Carta carta = descarte.peek();
                 System.out.printf(" %s %s", carta.getSimbolo(), carta.getNaipe().getTipo());
             } else if (qtd == 3) {
-                for (int i = 0; i < 3; i++) {
-                    Carta carta = descarte.get(i);
-                    System.out.printf(" %s %s", carta.getSimbolo(), carta.getNaipe().getTipo());
-                    System.out.printf(" | ");
-
+                Descarte aux = new Descarte();
+                int tam = descarte.size();
+                for (int i = 0; i < tam; i++) {
+                    Carta carta = descarte.pop();
+                    aux.pushCarta(carta);
+                    if (i < 3) {
+                        System.out.printf(" %s %s", carta.getSimbolo(), carta.getNaipe().getTipo());
+                        System.out.printf(" | ");               
+                    }
+                }
+                for (int j=0; j< tam; j++){
+                    descarte.push(aux.popCarta());
                 }
             }
         }
