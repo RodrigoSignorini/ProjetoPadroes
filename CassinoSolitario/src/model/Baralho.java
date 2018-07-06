@@ -27,7 +27,7 @@ public class Baralho {
     }
 
     public void criarCartas() {
-        System.out.println("Criando cartas...\n");
+        System.out.println(">> Criando cartas...");
         for (int numCard = 1; numCard < 14; numCard++) {
             for (Naipe naipe : naipes) {
                 Carta novaCarta = new Carta("", naipe);
@@ -62,7 +62,7 @@ public class Baralho {
     }
 
     public void embaralhar() {
-        System.out.println("Embaralhando cartas...");
+        System.out.println(">> Embaralhando cartas...");
         Collections.shuffle(baralho);
         baralho.forEach((carta) -> {
 //            System.out.printf("Carta: %s, Naipe: %s, Cor:%s\n", carta.getValor(), carta.getNaipe().getTipo(), carta.getNaipe().getCor());
