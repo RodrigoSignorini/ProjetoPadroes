@@ -17,16 +17,18 @@ public class InterfaceCaractere {
      * Construtor.
      */
     public InterfaceCaractere(){
+        this.fc = new FacadeController();
         this.ler = new Scanner(System.in);
-        System.out.println("### BEM VINDO AO CASSINO ! ###");
-        this.menu();
+        System.out.println(" BOA SORTE!");
+        this.imprimirTabuleiro();
     }
     
     /**
      * Mátodo que imprime o estado atual do tabuleiro de jogo depois de cada ação.
      */
-    private void jogarPaciencia(){    
-        System.out.println("\n *********** INICIANDO PACIÊNCIA ... ***********");
+    private void imprimirTabuleiro(){    
+        System.out.println("_______________________________________________________________________________________________________________________________________");
+        System.out.println("\n PACIÊNCIA:");
         System.out.println("  1: ESTOQUE == " + fc.getEstoque());
         System.out.println("  2: DESCARTE == " + fc.getDescarte());
         
@@ -81,27 +83,26 @@ public class InterfaceCaractere {
             int x = Integer.parseInt(ler.nextLine());
             if(x < 1 || x > 5){
                 System.out.println(" OPÇÃO INVÁLIDA!\n\n");
-                jogarPaciencia();
+                imprimirTabuleiro();
             }
             else{
                 switch(x){
                     case 1:
                         caso1(); 
-                        jogarPaciencia();
+                        imprimirTabuleiro();
                         break;
                     case 2:
                         fc.pedirCarta();
-                        jogarPaciencia();
+                        imprimirTabuleiro();
                         break;
                     case 3:
                         caso3(); 
-                        jogarPaciencia();
+                        imprimirTabuleiro();
                         break;
                     case 4:
-                        //Paciência -> 4 fundações e 7 fileiras
-                        this.fc = new FacadeController(4, 7, "paciencia");
+                        fc = new FacadeController();
                         System.out.println("\n BOA SORTE!");
-                        jogarPaciencia();
+                        imprimirTabuleiro();
                         break;
                     case 5:
                         System.err.println("\n OBRIGADO POR JOGAR! ;)");
@@ -111,7 +112,7 @@ public class InterfaceCaractere {
             }
         }catch(NumberFormatException nfe){
             System.out.println(" OPÇÃO INVÁLIDA!\n\n");
-            jogarPaciencia();
+            imprimirTabuleiro();
         }
     }
     
@@ -185,51 +186,11 @@ public class InterfaceCaractere {
             }
             else{
                 fc.moverCarta(origem, destino, cartas);
-                jogarPaciencia();
+                imprimirTabuleiro();
             }   
         }catch(NumberFormatException nfe){
             System.out.println(" OPÇÃO INVÁLIDA!\n\n");
             caso3();
         }
-    }
-
-    /**
-     * Método reponsável por montar o menu inicial do cassino
-     */
-    private void menu() {
-        System.out.println("MENU PRINCIPAL");
-        Scanner scanner = new Scanner(System.in);
-        int escolhaMenu = 0;
-        do {
-            System.out.println("\nEscolha uma das opcoes abaixo:"
-                    + "\n1 - Jogar Paciencia"
-                    + "\n2 - Jogar Big Bertha"
-                    + "\n3 - Sair\n");
-            System.out.print("Digite a opção: ");
-            escolhaMenu = scanner.nextInt();
-            switch (escolhaMenu) {
-                case 1:
-                    //Paciência -> 4 fundações e 7 fileiras
-                    this.fc = new FacadeController(4, 7, "paciencia");
-                    this.jogarPaciencia();
-                    break;
-                case 2:
-                    //Big Bertha -> 9 fundações e 15 fileiras
-                    this.fc = new FacadeController(9, 15, "bigbertha");
-                    System.out.println("\nJogo ainda nao implementado.");
-                    System.out.println("\nSaindo...\n\n");
-                    System.out.println("Sistema encerrado.\n");
-                    System.exit(1);
-                case 3:
-                    System.out.println("\nSaindo...\n\n");
-                    System.out.println("Sistema encerrado.\n");
-                    System.exit(1);
-
-                default:
-                    System.out.println("\n================"
-                            + "\nOPCAO INVALIDA!"
-                            + "\n================");
-            }
-        } while (escolhaMenu != 3);
     }
 }
