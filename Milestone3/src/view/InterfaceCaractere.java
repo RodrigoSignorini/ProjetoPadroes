@@ -69,7 +69,8 @@ public class InterfaceCaractere {
         System.out.println("  2 - PEDIR CARTA");
         System.out.println("  3 - MOVER CARTA");
         System.out.println("  4 - NOVO JOGO");
-        System.out.println("  5 - FINALIZAR");
+        System.out.println("  5 - VOLTAR AO MENU PRINCIPAL");
+        System.out.println("  6 - FINALIZAR");
         System.out.print(" DIGITE O Nº DA OPÇÃO DESEJADA: ");
         
         this.casosDeUso();
@@ -81,7 +82,7 @@ public class InterfaceCaractere {
     private void casosDeUso(){
         try {
             int x = Integer.parseInt(ler.nextLine());
-            if(x < 1 || x > 5){
+            if(x < 1 || x > 6){
                 System.out.println(" OPÇÃO INVÁLIDA!\n\n");
                 imprimirTabuleiro();
             }
@@ -105,6 +106,10 @@ public class InterfaceCaractere {
                         imprimirTabuleiro();
                         break;
                     case 5:
+                        menuPrincipal menu = new menuPrincipal();
+                        menu.menu();
+                        break;
+                    case 6:
                         System.err.println("\n OBRIGADO POR JOGAR! ;)");
                         System.exit(0);
                         break;

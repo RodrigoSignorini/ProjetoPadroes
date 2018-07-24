@@ -405,7 +405,7 @@ public class MesaBigBertha {
                 || origem == 17 || origem == 18 || origem == 19 || origem == 20 || origem == 21 || origem == 22 || origem == 23
                 || origem == 24 || origem == 25) {
             if (destino == 2 || destino == 3 || destino == 4 || destino == 5 || destino == 6 || destino == 7
-                    || destino == 8 || destino == 9 || origem == 10) {
+                    || destino == 8 || destino == 9 || destino == 10) {
                 fileirasParaFundacoes(origem, destino, qtdCartas);
             } else {
                 fileirasParaFileiras(origem, destino, qtdCartas);
@@ -527,6 +527,7 @@ public class MesaBigBertha {
      * @param qtd (quantidade de cartas)
      */
     private void fileirasParaFundacoes(int origem, int destino, int qtd) {
+        System.out.println("destino:"+destino);
         if (qtd > 1) {
             System.out.println("\n SÓ É POSSÍVEL MOVER UMA CARTA PARA A FUNDAÇÃO!");
         } else {

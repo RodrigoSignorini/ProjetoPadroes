@@ -80,7 +80,8 @@ public class InterfaceBigBertha {
         //System.out.println("  2 - PEDIR CARTA");
         System.out.println("  1 - MOVER CARTA");
         System.out.println("  2 - NOVO JOGO");
-        System.out.println("  3 - FINALIZAR");
+        System.out.println("  3 - VOLTAR AO MENU PRINCIPAL");
+        System.out.println("  4 - FINALIZAR");
         System.out.print(" DIGITE O Nº DA OPÇÃO DESEJADA: ");
 
         this.casosDeUso();
@@ -105,6 +106,10 @@ public class InterfaceBigBertha {
                         jogarBigBertha();
                         break;
                     case 3:
+                        menuPrincipal menu = new menuPrincipal();
+                        menu.menu();
+                        break;
+                    case 4:
                         System.err.println("\n OBRIGADO POR JOGAR! ;)");
                         System.exit(0);
                         break;
