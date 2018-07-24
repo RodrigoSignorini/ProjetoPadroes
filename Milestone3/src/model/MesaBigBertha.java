@@ -423,7 +423,8 @@ public class MesaBigBertha {
         if (qtd > 1) {
             System.out.println("\n SÓ É POSSÍVEL MOVER UMA CARTA DA PILHA DE ESTOQUE!");
         } else {
-            if (destino == 2 || destino == 3 || destino == 4 || destino == 5 || destino == 6 || destino == 7 || destino == 8 || destino == 9) {
+            if (destino == 2 || destino == 3 || destino == 4 || destino == 5 || destino == 6
+                    || destino == 7 || destino == 8 || destino == 9) {
                 if (fundacoes[destino - 2].empty()) {
                     if (!estoque.empty()) {
                         if (estoque.get(posicaoCarta).getNum() == 1) {
@@ -449,9 +450,15 @@ public class MesaBigBertha {
                         System.out.println("\n NÃO HÁ CARTAS NA PILHA DE DESCARTE!");
                     }
                 }
-//            } else {
-//                    System.out.println("\n MOVIMENTO PROIBIDO! A BASE DA FUNDAÇAO 10 É FORMADA POR REIS!");
-//                }
+            } else if (destino == 10) {
+                if (!estoque.empty()) {
+                    if (estoque.get(posicaoCarta).getNum() == 13) {
+                        fundacoes[destino - 2].push(estoque.remove(posicaoCarta));
+                    } else {
+                        System.out.println("\n ESTA FUNDACAO SO ACEITA REIS!");
+                    }
+                }
+
             } else {
                 estoqueParaFileira(destino, qtd, posicaoCarta);
             }
@@ -496,7 +503,7 @@ public class MesaBigBertha {
                     }
                 }
             } else {
-                System.out.println("\n DESTINO INCORRETO!");
+                System.out.println("\n DESTINO INCORRETO! ESTOQUE FILEIRA");
             }
         }
     }
@@ -509,39 +516,7 @@ public class MesaBigBertha {
      * @param qtd (quantidade de cartas)
      */
     private void fundacoesParaFileiras(int origem, int destino, int qtd) {
-        if (qtd > 1) {
-            System.out.println("\n SÓ É POSSÍVEL MOVER UMA CARTA DA FUNDAÇÃO!");
-        } else {
-            if (destino == 7 || destino == 8 || destino == 9 || destino == 10 || destino == 11 || destino == 12 || destino == 13) {
-                if (fileiras[destino - 7].empty()) {
-                    if (!fundacoes[origem - 3].empty()) {
-                        if (fundacoes[origem - 3].peek().getNum() == 13) {
-                            fileiras[destino - 7].push(fundacoes[origem - 3].pop());
-                        } else {
-                            System.out.println("\n MOVIMENTO PROIBIDO! A BASE DAS FILEIRAS SÃO FORMADAS POR REIS!");
-                        }
-                    } else {
-                        System.out.println("\n NÃO HÁ CARTAS NA FUNDAÇÃO!");
-                    }
-                } else {
-                    if (!fundacoes[origem - 3].empty()) {
-                        if (!fundacoes[origem - 3].peek().getCor().equals(fileiras[destino - 7].peek().getCor())) {
-                            if ((fileiras[destino - 7].peek().getNum() - fundacoes[origem - 3].peek().getNum()) == 1) {
-                                fileiras[destino - 7].push(fundacoes[origem - 3].pop());
-                            } else {
-                                System.out.println("\n MOVIMENTO PROIBIDO! CARTA INVÁLIDA!");
-                            }
-                        } else {
-                            System.out.println("\n MOVIMENTO PROIBIDO! CARTA INVÁLIDA!");
-                        }
-                    } else {
-                        System.out.println("\n NÃO HÁ CARTAS NA FUNDAÇÃO!");
-                    }
-                }
-            } else {
-                System.out.println("\n DESTINO INCORRETO!");
-            }
-        }
+        System.out.println("Não é permitido retornar a carta de topo das fundações para as fileiras.");
     }
 
     /**
@@ -555,7 +530,8 @@ public class MesaBigBertha {
         if (qtd > 1) {
             System.out.println("\n SÓ É POSSÍVEL MOVER UMA CARTA PARA A FUNDAÇÃO!");
         } else {
-            if (destino == 2 || destino == 3 || destino == 4 || destino == 5 || destino == 6 || destino == 7 || destino == 8 || destino == 9) {
+            if (destino == 2 || destino == 3 || destino == 4 || destino == 5 || destino == 6 || destino == 7
+                    || destino == 8 || destino == 9) {
                 if (fundacoes[destino - 2].empty()) {
                     if (!fileiras[origem - 11].empty()) {
                         if (fileiras[origem - 11].peek().getNum() == 1) {
@@ -587,6 +563,17 @@ public class MesaBigBertha {
                         System.out.println("\n NÃO HÁ CARTAS NA FILEIRA!");
                     }
                 }
+            } else if (destino == 10) {
+                if (!fileiras[origem - 11].empty()) {
+                    if (fileiras[origem - 11].peek().getNum() == 13) {
+                        fundacoes[destino - 2].push(fileiras[origem - 11].pop());
+                    } else {
+                        System.out.println("\n ESTA FUNDACAO SO ACEITA REIS!");
+                    }
+                } else {
+                    System.out.println("\n NÃO HÁ CARTAS NA FILEIRA!");
+                }
+
             } else {
                 fileirasParaFileiras(origem, destino, qtd);
             }
@@ -654,7 +641,7 @@ public class MesaBigBertha {
                     fileiras[origem - 11].peek().mostrarCarta();
                 }
             } else {
-                System.out.println("\n DESTINO INCORRETO!");
+                System.out.println("\n DESTINO INCORRETO! FILEIRA FILEIRA");
             }
         }
     }
