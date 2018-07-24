@@ -16,6 +16,7 @@ public class InterfaceBigBertha {
 
     private MesaBigBertha mesa;
     private final Scanner ler;
+    int posicaoCarta;
 
     /**
      * Construtor.
@@ -31,14 +32,15 @@ public class InterfaceBigBertha {
         System.out.println("  1: ESTOQUE == " + mesa.getEstoque());
 
         System.out.println("");
-        System.out.println("  3: FUNDAÇÃO 1 == " + mesa.getFundacao1());
-        System.out.println("  4: FUNDAÇÃO 2 == " + mesa.getFundacao2());
-        System.out.println("  5: FUNDAÇÃO 3 == " + mesa.getFundacao3());
-        System.out.println("  6: FUNDAÇÃO 4 == " + mesa.getFundacao4());
-        System.out.println("  7: FUNDAÇÃO 5 == " + mesa.getFundacao5());
-        System.out.println("  8: FUNDAÇÃO 6 == " + mesa.getFundacao6());
-        System.out.println("  9: FUNDAÇÃO 7 == " + mesa.getFundacao7());
-        System.out.println("  10: FUNDAÇÃO 8 == " + mesa.getFundacao8());
+        System.out.println("  2: FUNDAÇÃO 1 == " + mesa.getFundacao1());
+        System.out.println("  3: FUNDAÇÃO 2 == " + mesa.getFundacao2());
+        System.out.println("  4: FUNDAÇÃO 3 == " + mesa.getFundacao3());
+        System.out.println("  5: FUNDAÇÃO 4 == " + mesa.getFundacao4());
+        System.out.println("  6: FUNDAÇÃO 5 == " + mesa.getFundacao5());
+        System.out.println("  7: FUNDAÇÃO 6 == " + mesa.getFundacao6());
+        System.out.println("  8: FUNDAÇÃO 7 == " + mesa.getFundacao7());
+        System.out.println("  9: FUNDAÇÃO 8 == " + mesa.getFundacao8());
+        System.out.println("  10: FUNDAÇÃO K == " + mesa.getFundacaoK());
 
         System.out.println("");
         System.out.println("  11: TABLEAU1 == " + mesa.getPilhaA());
@@ -87,7 +89,7 @@ public class InterfaceBigBertha {
     private void casosDeUso() {
         try {
             int x = Integer.parseInt(ler.nextLine());
-            if (x < 1 || x > 5) {
+            if (x < 1 || x > 3) {
                 System.out.println(" OPÇÃO INVÁLIDA!\n\n");
                 jogarBigBertha();
             } else {
@@ -98,7 +100,7 @@ public class InterfaceBigBertha {
                         break;
                     case 2:
                         //Paciência -> 4 fundações e 7 fileiras
-                        new InterfaceCaractere();
+                        new InterfaceBigBertha();
                         System.out.println("\n BOA SORTE!");
                         jogarBigBertha();
                         break;
@@ -116,36 +118,54 @@ public class InterfaceBigBertha {
 
     private void caso1() {
         System.out.println("_______________________________________________________________________________________________________________________________________\n");
-        System.out.println("  2: DESCARTE == " + mesa.getDescarte());
+        System.out.println("  1: ESTOQUE == " + mesa.getEstoque());
 
         System.out.println("");
-        System.out.println("  3: FUNDAÇÃO 1 == " + mesa.getFundacao1());
-        System.out.println("  4: FUNDAÇÃO 2 == " + mesa.getFundacao2());
-        System.out.println("  5: FUNDAÇÃO 3 == " + mesa.getFundacao3());
-        System.out.println("  6: FUNDAÇÃO 4 == " + mesa.getFundacao4());
+        System.out.println("  2: FUNDAÇÃO 1 == " + mesa.getFundacao1());
+        System.out.println("  3: FUNDAÇÃO 2 == " + mesa.getFundacao2());
+        System.out.println("  4: FUNDAÇÃO 3 == " + mesa.getFundacao3());
+        System.out.println("  5: FUNDAÇÃO 4 == " + mesa.getFundacao4());
+        System.out.println("  6: FUNDAÇÃO 5 == " + mesa.getFundacao5());
+        System.out.println("  7: FUNDAÇÃO 6 == " + mesa.getFundacao6());
+        System.out.println("  8: FUNDAÇÃO 7 == " + mesa.getFundacao7());
+        System.out.println("  9: FUNDAÇÃO 8 == " + mesa.getFundacao8());
+        System.out.println("  10: FUNDAÇÃO K == " + mesa.getFundacaoK());
 
         System.out.println("");
-        System.out.println("  7: TABLEAU1 == " + mesa.getPilhaA());
-        System.out.println("  8: TABLEAU2 == " + mesa.getPilhaB());
-        System.out.println("  9: TABLEAU3 == " + mesa.getPilhaC());
-        System.out.println(" 10: TABLEAU4 == " + mesa.getPilhaD());
-        System.out.println(" 11: TABLEAU5 == " + mesa.getPilhaE());
-        System.out.println(" 12: TABLEAU6 == " + mesa.getPilhaF());
-        System.out.println(" 13: TABLEAU7 == " + mesa.getPilhaG());
+        System.out.println("  11: TABLEAU1 == " + mesa.getPilhaA());
+        System.out.println("  12: TABLEAU2 == " + mesa.getPilhaB());
+        System.out.println("  13: TABLEAU3 == " + mesa.getPilhaC());
+        System.out.println("  14: TABLEAU4 == " + mesa.getPilhaD());
+        System.out.println("  15: TABLEAU5 == " + mesa.getPilhaE());
+        System.out.println("  16: TABLEAU6 == " + mesa.getPilhaF());
+        System.out.println("  17: TABLEAU7 == " + mesa.getPilhaG());
+        System.out.println("  18: TABLEAU8 == " + mesa.getPilhaH());
+        System.out.println("  19: TABLEAU9 == " + mesa.getPilhaI());
+        System.out.println("  20: TABLEAU10 == " + mesa.getPilhaJ());
+        System.out.println("  21: TABLEAU11 == " + mesa.getPilhaK());
+        System.out.println("  22: TABLEAU12 == " + mesa.getPilhaL());
+        System.out.println("  23: TABLEAU13 == " + mesa.getPilhaM());
+        System.out.println("  24: TABLEAU14 == " + mesa.getPilhaN());
+        System.out.println("  25: TABLEAU15 == " + mesa.getPilhaO());
 
         try {
             System.out.print("\n DIGITE O NÚMERO CORRESPONDENTE À PILHA DE ORIGEM: ");
             int origem = Integer.parseInt(ler.nextLine());
 
-            if (origem < 2 || origem > 16) {
+            if (origem < 1 || origem > 25) {
                 System.out.println(" OPÇÃO INVÁLIDA! ORIGEM INCORRETA!\n\n");
                 caso1();
+            }
+
+            if (origem == 1) {
+                System.out.print("\n DIGITE O NÚMERO CORRESPONDENTE À POSICAO DA CARTA DA PILHA DE ORIGEM: ");
+                posicaoCarta = Integer.parseInt(ler.nextLine());
             }
 
             System.out.print(" DIGITE O NÚMERO CORRESPONDENTE À PILHA DE DESTINO: ");
             int destino = Integer.parseInt(ler.nextLine());
 
-            if (destino < 2 || destino > 13 || destino == origem) {
+            if (destino < 2 || destino > 25 || destino == origem) {
                 System.out.println(" OPÇÃO INVÁLIDA! DESTINO INCORRETO!\n\n");
                 caso1();
             }
@@ -157,8 +177,14 @@ public class InterfaceBigBertha {
                 System.out.println(" OPÇÃO INVÁLIDA! NÃO É POSSÍVEL MOVER 0 CARTAS!\n\n");
                 caso1();
             } else {
-                mesa.mover(origem, destino, cartas);
-                jogarBigBertha();
+                if (origem != 1) {
+                    mesa.mover(origem, destino, cartas, 0);
+                    jogarBigBertha();
+                } else {
+                    mesa.mover(origem, destino, cartas, posicaoCarta);
+                    jogarBigBertha();
+                }
+
             }
         } catch (NumberFormatException nfe) {
             System.out.println(" OPÇÃO INVÁLIDA!\n\n");

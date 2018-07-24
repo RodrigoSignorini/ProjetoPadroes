@@ -41,7 +41,7 @@ public class MesaBigBertha {
      * Método que cria as pilhas de cartas necessárias para uma partida.
      */
     private void criarPilhas() {
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             fundacoes[i] = new Stack<>();
         }
         for (int i = 0; i < 15; i++) {
@@ -73,10 +73,11 @@ public class MesaBigBertha {
      */
     public String getEstoque() {
         String nome = "";
-
+        int aux = 0;
         for (Carta c : estoque) {
             c.mostrarCarta();
-            nome += c.toString();
+            nome += c.toString() + "Pos:" + aux + " | ";
+            aux++;
         }
 
         return nome;
@@ -394,13 +395,17 @@ public class MesaBigBertha {
      * @param destino (pilha de destino)
      * @param qtdCartas (quantidade de cartas à serem movidas)
      */
-    public void mover(int origem, int destino, int qtdCartas) {
-        if (origem == 2) {
-            descarteParaFundacao(destino, qtdCartas);
-        } else if (origem == 3 || origem == 4 || origem == 5 || origem == 6) {
+    public void mover(int origem, int destino, int qtdCartas, int posicaoCarta) {
+        if (origem == 1) {
+            estoqueParaFundacao(destino, qtdCartas, posicaoCarta);
+        } else if (origem == 2 || origem == 3 || origem == 4 || origem == 5 || origem == 6 || origem == 7
+                || origem == 8 || origem == 9 || origem == 10) {
             fundacoesParaFileiras(origem, destino, qtdCartas);
-        } else if (origem == 7 || origem == 8 || origem == 9 || origem == 10 || origem == 11 || origem == 12 || origem == 13) {
-            if (destino == 3 || destino == 4 || destino == 5 || destino == 6) {
+        } else if (origem == 11 || origem == 12 || origem == 13 || origem == 14 || origem == 15 || origem == 16
+                || origem == 17 || origem == 18 || origem == 19 || origem == 20 || origem == 21 || origem == 22 || origem == 23
+                || origem == 24 || origem == 25) {
+            if (destino == 2 || destino == 3 || destino == 4 || destino == 5 || destino == 6 || destino == 7
+                    || destino == 8 || destino == 9 || origem == 10) {
                 fileirasParaFundacoes(origem, destino, qtdCartas);
             } else {
                 fileirasParaFileiras(origem, destino, qtdCartas);
@@ -414,26 +419,26 @@ public class MesaBigBertha {
      * @param destino (pilha de destino)
      * @param qtd (quantidade de cartas)
      */
-    private void descarteParaFundacao(int destino, int qtd) {
+    private void estoqueParaFundacao(int destino, int qtd, int posicaoCarta) {
         if (qtd > 1) {
-            System.out.println("\n SÓ É POSSÍVEL MOVER UMA CARTA DA PILHA DE DESCARTE!");
+            System.out.println("\n SÓ É POSSÍVEL MOVER UMA CARTA DA PILHA DE ESTOQUE!");
         } else {
-            if (destino == 3 || destino == 4 || destino == 5 || destino == 6) {
-                if (fundacoes[destino - 3].empty()) {
-                    if (!descarte.empty()) {
-                        if (descarte.peek().getNum() == 1) {
-                            fundacoes[destino - 3].push(descarte.pop());
+            if (destino == 2 || destino == 3 || destino == 4 || destino == 5 || destino == 6 || destino == 7 || destino == 8 || destino == 9) {
+                if (fundacoes[destino - 2].empty()) {
+                    if (!estoque.empty()) {
+                        if (estoque.get(posicaoCarta).getNum() == 1) {
+                            fundacoes[destino - 2].push(estoque.remove(posicaoCarta));
                         } else {
                             System.out.println("\n MOVIMENTO PROIBIDO! A BASE DAS FUNDAÇÕES SÃO FORMADAS POR ÁSES!");
                         }
                     } else {
-                        System.out.println("\n NÃO HÁ CARTAS NA PILHA DE DESCARTE!");
+                        System.out.println("\n NÃO HÁ CARTAS NA PILHA DE ESTOQUE!");
                     }
                 } else {
-                    if (!descarte.empty()) {
-                        if (descarte.peek().getNaipe().equals(fundacoes[destino - 3].peek().getNaipe())) {
-                            if ((descarte.peek().getNum() - fundacoes[destino - 3].peek().getNum()) == 1) {
-                                fundacoes[destino - 3].push(descarte.pop());
+                    if (!estoque.empty()) {
+                        if (estoque.get(posicaoCarta).getNaipe().equals(fundacoes[destino - 2].peek().getNaipe())) {
+                            if ((estoque.get(posicaoCarta).getNum() - fundacoes[destino - 2].peek().getNum()) == 1) {
+                                fundacoes[destino - 2].push(estoque.remove(posicaoCarta));
                             } else {
                                 System.out.println("\n MOVIMENTO PROIBIDO! CARTA INVÁLIDA!");
                             }
@@ -444,8 +449,11 @@ public class MesaBigBertha {
                         System.out.println("\n NÃO HÁ CARTAS NA PILHA DE DESCARTE!");
                     }
                 }
+//            } else {
+//                    System.out.println("\n MOVIMENTO PROIBIDO! A BASE DA FUNDAÇAO 10 É FORMADA POR REIS!");
+//                }
             } else {
-                descarteParaFileira(destino, qtd);
+                estoqueParaFileira(destino, qtd, posicaoCarta);
             }
         }
     }
@@ -456,26 +464,27 @@ public class MesaBigBertha {
      * @param destino (pilha de destino)
      * @param qtd (quantidade de cartas)
      */
-    private void descarteParaFileira(int destino, int qtd) {
+    private void estoqueParaFileira(int destino, int qtd, int posicaoCarta) {
         if (qtd > 1) {
             System.out.println("\n SÓ É POSSÍVEL MOVER UMA CARTA DA PILHA DE DESCARTE!");
         } else {
-            if (destino == 7 || destino == 8 || destino == 9 || destino == 10 || destino == 11 || destino == 12 || destino == 13) {
-                if (fileiras[destino - 7].empty()) {
-                    if (!descarte.empty()) {
-                        if (descarte.peek().getNum() == 13) {
-                            fileiras[destino - 7].push(descarte.pop());
+            if (destino == 11 || destino == 12 || destino == 13 || destino == 14 || destino == 15 || destino == 16 || destino == 17
+                    || destino == 18 || destino == 19 || destino == 20 || destino == 21 || destino == 22 || destino == 23 || destino == 24 || destino == 25) {
+                if (fileiras[destino - 11].empty()) {
+                    if (!estoque.empty()) {
+                        if (estoque.get(posicaoCarta).getNum() == 13) {
+                            fileiras[destino - 11].push(estoque.remove(posicaoCarta));
                         } else {
                             System.out.println("\n MOVIMENTO PROIBIDO! A BASE DAS FILEIRAS SÃO FORMADAS POR REIS!");
                         }
                     } else {
-                        System.out.println("\n NÃO HÁ CARTAS NA PILHA DE DESCARTE!");
+                        System.out.println("\n NÃO HÁ CARTAS NA PILHA DE ESTOQUE!");
                     }
                 } else {
-                    if (!descarte.empty()) {
-                        if (!descarte.peek().getCor().equals(fileiras[destino - 7].peek().getCor())) {
-                            if ((fileiras[destino - 7].peek().getNum() - descarte.peek().getNum()) == 1) {
-                                fileiras[destino - 7].push(descarte.pop());
+                    if (!estoque.empty()) {
+                        if (!estoque.get(posicaoCarta).getCor().equals(fileiras[destino - 11].peek().getCor())) {
+                            if ((fileiras[destino - 11].peek().getNum() - estoque.get(posicaoCarta).getNum()) == 1) {
+                                fileiras[destino - 11].push(estoque.remove(posicaoCarta));
                             } else {
                                 System.out.println("\n MOVIMENTO PROIBIDO! CARTA INVÁLIDA!");
                             }
@@ -483,7 +492,7 @@ public class MesaBigBertha {
                             System.out.println("\n MOVIMENTO PROIBIDO! CARTA INVÁLIDA!");
                         }
                     } else {
-                        System.out.println("\n NÃO HÁ CARTAS NA PILHA DE DESCARTE!");
+                        System.out.println("\n NÃO HÁ CARTAS NA PILHA DE ESTOQUE!");
                     }
                 }
             } else {
@@ -546,13 +555,13 @@ public class MesaBigBertha {
         if (qtd > 1) {
             System.out.println("\n SÓ É POSSÍVEL MOVER UMA CARTA PARA A FUNDAÇÃO!");
         } else {
-            if (destino == 3 || destino == 4 || destino == 5 || destino == 6) {
-                if (fundacoes[destino - 3].empty()) {
-                    if (!fileiras[origem - 7].empty()) {
-                        if (fileiras[origem - 7].peek().getNum() == 1) {
-                            fundacoes[destino - 3].push(fileiras[origem - 7].pop());
-                            if (!fileiras[origem - 7].empty()) {
-                                fileiras[origem - 7].peek().mostrarCarta();
+            if (destino == 2 || destino == 3 || destino == 4 || destino == 5 || destino == 6 || destino == 7 || destino == 8 || destino == 9) {
+                if (fundacoes[destino - 2].empty()) {
+                    if (!fileiras[origem - 11].empty()) {
+                        if (fileiras[origem - 11].peek().getNum() == 1) {
+                            fundacoes[destino - 2].push(fileiras[origem - 11].pop());
+                            if (!fileiras[origem - 11].empty()) {
+                                fileiras[origem - 11].peek().mostrarCarta();
                             }
                         } else {
                             System.out.println("\n MOVIMENTO PROIBIDO! A BASE DAS FUNDAÇÕES SÃO FORMADAS POR ÁSES!");
@@ -561,12 +570,12 @@ public class MesaBigBertha {
                         System.out.println("\n NÃO HÁ CARTAS NA FILEIRA!");
                     }
                 } else {
-                    if (!fileiras[origem - 7].empty()) {
-                        if (fileiras[origem - 7].peek().getNaipe().equals(fundacoes[destino - 3].peek().getNaipe())) {
-                            if ((fileiras[origem - 7].peek().getNum() - fundacoes[destino - 3].peek().getNum()) == 1) {
-                                fundacoes[destino - 3].push(fileiras[origem - 7].pop());
-                                if (!fileiras[origem - 7].empty()) {
-                                    fileiras[origem - 7].peek().mostrarCarta();
+                    if (!fileiras[origem - 11].empty()) {
+                        if (fileiras[origem - 11].peek().getNaipe().equals(fundacoes[destino - 2].peek().getNaipe())) {
+                            if ((fileiras[origem - 11].peek().getNum() - fundacoes[destino - 2].peek().getNum()) == 1) {
+                                fundacoes[destino - 2].push(fileiras[origem - 11].pop());
+                                if (!fileiras[origem - 11].empty()) {
+                                    fileiras[origem - 11].peek().mostrarCarta();
                                 }
                             } else {
                                 System.out.println("\n MOVIMENTO PROIBIDO! CARTA INVÁLIDA!");
@@ -592,16 +601,18 @@ public class MesaBigBertha {
      * @param qtd (quantidade de cartas)
      */
     private void fileirasParaFileiras(int origem, int destino, int qtd) {
-        if (qtd > fileiras[origem - 7].size()) {
+        if (qtd > fileiras[origem - 11].size()) {
             System.out.println("\n NÃO EXISTEM TANTAS CARTAS ASSIM PARA MOVER!");
         } else {
-            if (destino == 7 || destino == 8 || destino == 9 || destino == 10 || destino == 11 || destino == 12 || destino == 13) {
+            if (destino == 11 || destino == 12 || destino == 13 || destino == 14 || destino == 15 || destino == 16
+                    || destino == 17 || destino == 18 || destino == 19 || destino == 20 || destino == 21 || destino == 22 || destino == 23
+                    || destino == 24 || destino == 25) {
                 Stack<Carta> aux = new Stack<>();
                 Stack<Carta> aux2 = new Stack<>();
                 Stack<Carta> aux3 = new Stack<>();
 
-                aux.addAll(fileiras[origem - 7]);
-                aux3.addAll(fileiras[destino - 7]);
+                aux.addAll(fileiras[origem - 11]);
+                aux3.addAll(fileiras[destino - 11]);
 
                 for (int i = 0; i < qtd; i++) {
                     Carta c = aux.pop();
@@ -636,11 +647,11 @@ public class MesaBigBertha {
                 }
 
                 for (int i = 0; i < qtd; i++) {
-                    fileiras[destino - 7].push(aux.pop());
-                    fileiras[origem - 7].pop();
+                    fileiras[destino - 11].push(aux.pop());
+                    fileiras[origem - 11].pop();
                 }
-                if (!fileiras[origem - 7].empty()) {
-                    fileiras[origem - 7].peek().mostrarCarta();
+                if (!fileiras[origem - 11].empty()) {
+                    fileiras[origem - 11].peek().mostrarCarta();
                 }
             } else {
                 System.out.println("\n DESTINO INCORRETO!");
