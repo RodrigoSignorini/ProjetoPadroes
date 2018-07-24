@@ -107,6 +107,7 @@ public class InterfaceBigBertha {
                         break;
                     case 3:
                         menuPrincipal menu = new menuPrincipal();
+                        System.out.print("\n\n\n\n\n\n\n\n\n\n");
                         menu.menu();
                         break;
                     case 4:

@@ -12,9 +12,9 @@ import java.util.Scanner;
  * @author gboan
  */
 public class menuPrincipal {
-    
-    public void menu(){
-    System.out.println("### BEM VINDO AO CASSINO ! ###");
+
+    public void menu() {
+        System.out.println("### BEM VINDO AO CASSINO ! ###");
         System.out.println("MENU PRINCIPAL");
         Scanner scanner = new Scanner(System.in);
         int escolhaMenu = 0;
